@@ -6,37 +6,30 @@ title: Latent Digest
 
 Deep research essays on the intersection of **AI systems**, **cognitive architectures**, and **human-machine interfaces**.
 
-Each digest is a **time-clustered collection** of deep research—not a coherent narrative, but a snapshot of intellectual preoccupations during a particular period. Some essays connect naturally; others sit alongside each other simply because they occupied the same temporal window of curiosity. The coherence isn't planned—it emerges (or doesn't) from whatever threads were being pulled that week.
-
-Think of each digest as an archaeological layer: the topics reveal what questions were alive at that moment, even when those questions point in different directions.
+These are time-clustered explorations—snapshots of intellectual preoccupations that don't seek coherence but sometimes find it anyway. The "latent" refers to what lies beneath the surface: hidden structures in language, cognition, and technical systems that these essays attempt to surface.
 
 ---
 
-## Latest Digests
+## Explore
 
-- [[digest-v3|Digest v3]] — Knowledge graphs, vibe coding infrastructure, bidirectional context
-- [[digest-v2|Digest v2]] — AI experience design, Psyche-Polis, small model swarms
-- [[digest-v1|Digest v1]] — Computational psychoanalysis, psyche-computer interfaces, artificial dreaming
+Use the **graph view** to discover connections between essays, or browse by theme:
+
+**AI Systems**
+- [[tags/ai-systems/knowledge-graphs|Knowledge Graphs]] — Graph-based knowledge representation and retrieval
+- [[tags/ai-systems/memory-systems|Memory Systems]] — Persistence, consolidation, and principled decay
+- [[tags/ai-systems/small-models|Small Models]] — Specialized sub-10B parameter models
+- [[tags/ai-systems/cognitive-architecture|Cognitive Architecture]] — Two-tier processing patterns
+
+**Human-AI Interaction**
+- [[tags/human-ai-interaction/psyche-interfaces|Psyche Interfaces]] — Language as archaeological data about the mind
+- [[tags/human-ai-interaction/ai-experience-design|AI Experience Design]] — UX patterns for AI products
+- [[tags/human-ai-interaction/bidirectional-context|Bidirectional Context]] — Mutual transformation in dialogue
+
+**Applied Domains**
+- [[tags/applied/neuroscience|Neuroscience]] — Brain models informing AI design
+- [[tags/applied/ai-native-development|AI-Native Development]] — Building with AI-first tools
+- [[tags/applied/therapeutics|Therapeutics]] — Health and medical applications
 
 ---
-
-## Themes
-
-Browse by topic using the **tag explorer** in the sidebar, or explore connections in the **graph view** on the right.
-
-Core threads running through this research:
-
-- **[[tags/knowledge-graphs|Knowledge Graphs]]** — How AI systems store, retrieve, and evolve understanding through graph structures
-- **[[tags/small-models|Small Models]]** — Specialized sub-10B parameter models for efficient, targeted NLP tasks
-- **[[tags/memory-systems|Memory Systems]]** — Architectures for AI persistence, consolidation, and principled decay
-- **[[tags/psyche-interfaces|Psyche Interfaces]]** — Systems that treat language as archaeological data about the mind
-- **[[tags/human-ai-interaction|Human-AI Interaction]]** — Design patterns for meaningful cognitive partnership
-- **[[tags/cognitive-architecture|Cognitive Architecture]]** — Two-tier processing patterns mirroring biological System 1/System 2
-
----
-
-## About
-
-Latent Digest is a personal knowledge base and research publication. The "latent" refers to what lies beneath the surface—the hidden structures in language, cognition, and technical systems that these essays attempt to surface.
 
 *Built with [Quartz](https://quartz.jzhao.xyz/)*
