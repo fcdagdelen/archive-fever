@@ -82,6 +82,7 @@ export default (() => {
 
   ViewToggle.afterDOMLoaded = `
 const STORAGE_KEY = 'latent-digest-view-preference';
+let graphRendered = false;
 
 function initViewToggle() {
   const toggleBtns = document.querySelectorAll('.view-toggle .toggle-btn');
@@ -89,22 +90,6 @@ function initViewToggle() {
   const graphContainer = document.querySelector('.home-graph');
 
   if (!toggleBtns.length || !cardsContainer) return;
-
-  // Load saved preference
-  const savedView = localStorage.getItem(STORAGE_KEY) || 'cards';
-  setView(savedView);
-
-  toggleBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const view = this.getAttribute('data-view');
-      if (view) {
-        setView(view);
-        localStorage.setItem(STORAGE_KEY, view);
-      }
-    });
-  });
-
-  let graphRendered = false;
 
   function setView(view) {
     toggleBtns.forEach(btn => {
@@ -125,13 +110,27 @@ function initViewToggle() {
         if (triggerBtn) {
           // Small delay to ensure container is visible before rendering
           setTimeout(() => {
-            triggerBtn.click();
+            triggerBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
             graphRendered = true;
-          }, 50);
+          }, 100);
         }
       }
     }
   }
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const view = this.getAttribute('data-view');
+      if (view) {
+        setView(view);
+        localStorage.setItem(STORAGE_KEY, view);
+      }
+    });
+  });
+
+  // Load saved preference
+  const savedView = localStorage.getItem(STORAGE_KEY) || 'cards';
+  setView(savedView);
 }
 
 if (document.readyState === 'loading') {

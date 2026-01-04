@@ -44,7 +44,7 @@ export default ((opts?: Partial<D3Config>) => {
         <div class="home-graph-container">
           <div class="global-graph-outer">
             <div class="global-graph-container" data-cfg={JSON.stringify(config)}></div>
-            <button class="global-graph-icon home-graph-trigger" aria-label="Render Graph" style="display: none;">
+            <button class="global-graph-icon home-graph-trigger" aria-label="Render Graph">
               Render
             </button>
           </div>
@@ -75,6 +75,14 @@ export default ((opts?: Partial<D3Config>) => {
 .home-graph .global-graph-container {
   width: 100%;
   height: 100%;
+}
+
+.home-graph .home-graph-trigger {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
 }
 
 @media (max-width: 800px) {
