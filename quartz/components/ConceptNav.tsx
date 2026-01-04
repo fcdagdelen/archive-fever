@@ -1,5 +1,4 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { resolveRelative } from "../util/path"
 import { classNames } from "../util/lang"
 
 // Concept definitions with display names and tag paths
@@ -19,22 +18,15 @@ const CONCEPTS = [
 export default (() => {
   const ConceptNav: QuartzComponent = ({
     allFiles,
-    fileData,
     displayClass,
   }: QuartzComponentProps) => {
-    // Build a map of tag -> articles
-    const tagArticles = new Map<string, Array<{ title: string; slug: string }>>()
+    // Build a map of tag -> article count
+    const tagCounts = new Map<string, number>()
 
     for (const file of allFiles) {
       const tags = file.frontmatter?.tags ?? []
-      const title = file.frontmatter?.title ?? "Untitled"
-      const slug = file.slug ?? ""
-
       for (const tag of tags) {
-        if (!tagArticles.has(tag)) {
-          tagArticles.set(tag, [])
-        }
-        tagArticles.get(tag)!.push({ title, slug })
+        tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1)
       }
     }
 
@@ -43,30 +35,14 @@ export default (() => {
         <h3 class="concept-nav-title">Concepts</h3>
         <ul class="concept-list">
           {CONCEPTS.map((concept) => {
-            const articles = tagArticles.get(concept.tag) ?? []
-            const count = articles.length
+            const count = tagCounts.get(concept.tag) ?? 0
 
             return (
-              <li class="concept-item" data-concept={concept.tag}>
-                <span class="concept-name">{concept.name}</span>
-                {count > 0 && <span class="concept-count">{count}</span>}
-                {count > 0 && (
-                  <div class="concept-tooltip">
-                    <div class="tooltip-header">{concept.name}</div>
-                    <ul class="tooltip-articles">
-                      {articles.map((article) => (
-                        <li>
-                          <a
-                            href={resolveRelative(fileData.slug!, article.slug)}
-                            class="internal"
-                          >
-                            {article.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+              <li class="concept-item">
+                <a href={`./tags/${concept.tag}`} class="concept-link">
+                  <span class="concept-name">{concept.name}</span>
+                  {count > 0 && <span class="concept-count">{count}</span>}
+                </a>
               </li>
             )
           })}
@@ -92,9 +68,9 @@ export default (() => {
 }
 
 .concept-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -102,16 +78,25 @@ export default (() => {
 
 .concept-item {
   position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.concept-item::before {
+  display: none !important;
+}
+
+.concept-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
-  cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.15s ease;
 }
 
-.concept-item:hover {
+.concept-link:hover {
   background-color: var(--lightgray);
 }
 
@@ -131,81 +116,13 @@ export default (() => {
   text-align: center;
 }
 
-.concept-tooltip {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: 0;
-  margin-left: 0.5rem;
-  background: var(--light);
-  border: 1px solid var(--lightgray);
-  border-radius: 8px;
-  padding: 0.75rem;
-  min-width: 220px;
-  max-width: 280px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  z-index: 100;
-}
-
-.concept-item:hover .concept-tooltip {
-  display: block;
-}
-
-.tooltip-header {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--secondary);
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--lightgray);
-}
-
-.tooltip-articles {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-}
-
-.tooltip-articles li {
-  font-size: 0.8125rem;
-  line-height: 1.4;
-}
-
-.tooltip-articles a {
-  color: var(--dark);
-  text-decoration: none;
-}
-
-.tooltip-articles a:hover {
-  color: var(--secondary);
-}
-
 /* Dark mode */
-[data-theme="dark"] .concept-item:hover {
+[data-theme="dark"] .concept-link:hover {
   background-color: var(--darkgray);
 }
 
 [data-theme="dark"] .concept-count {
   background: var(--darkgray);
-}
-
-[data-theme="dark"] .concept-tooltip {
-  background: var(--dark);
-  border-color: var(--gray);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-/* Mobile: show tooltip below instead of to the side */
-@media (max-width: 1200px) {
-  .concept-tooltip {
-    left: 0;
-    top: 100%;
-    margin-left: 0;
-    margin-top: 0.25rem;
-  }
 }
 `
 

@@ -40,7 +40,7 @@ export default ((opts?: Partial<D3Config>) => {
   const HomeGraph: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
     const config = { ...defaultConfig, ...opts }
     return (
-      <div class={classNames(displayClass, "home-graph")} style="display: none;">
+      <div class={classNames(displayClass, "home-graph")}>
         <div class="home-graph-container">
           <div class="global-graph-outer">
             <div class="global-graph-container" data-cfg={JSON.stringify(config)}></div>
@@ -53,6 +53,7 @@ export default ((opts?: Partial<D3Config>) => {
   HomeGraph.css = `
 .home-graph {
   width: 100%;
+  display: none;
 }
 
 .home-graph-container {

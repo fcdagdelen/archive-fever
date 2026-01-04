@@ -75,24 +75,25 @@ export default ((userOpts?: Partial<Options>) => {
 
   ArticleCards.css = `
 .article-cards {
-  width: 100%;
+  width: 100% !important;
+  display: block !important;
 }
 
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.5rem !important;
 }
 
 @media (max-width: 1200px) {
   .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media (max-width: 800px) {
   .cards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 

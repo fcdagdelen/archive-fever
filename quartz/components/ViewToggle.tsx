@@ -84,21 +84,23 @@ export default (() => {
 const STORAGE_KEY = 'latent-digest-view-preference';
 
 function initViewToggle() {
-  const toggleBtns = document.querySelectorAll('.toggle-btn');
+  const toggleBtns = document.querySelectorAll('.view-toggle .toggle-btn');
   const cardsContainer = document.querySelector('.article-cards');
   const graphContainer = document.querySelector('.home-graph');
 
-  if (!toggleBtns.length) return;
+  if (!toggleBtns.length || !cardsContainer) return;
 
   // Load saved preference
   const savedView = localStorage.getItem(STORAGE_KEY) || 'cards';
   setView(savedView);
 
   toggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const view = btn.getAttribute('data-view');
-      setView(view);
-      localStorage.setItem(STORAGE_KEY, view);
+    btn.addEventListener('click', function() {
+      const view = this.getAttribute('data-view');
+      if (view) {
+        setView(view);
+        localStorage.setItem(STORAGE_KEY, view);
+      }
     });
   });
 
@@ -106,19 +108,23 @@ function initViewToggle() {
     toggleBtns.forEach(btn => {
       const isActive = btn.getAttribute('data-view') === view;
       btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-pressed', isActive.toString());
+      btn.setAttribute('aria-pressed', String(isActive));
     });
 
     if (cardsContainer) {
-      cardsContainer.style.display = view === 'cards' ? 'block' : 'none';
+      cardsContainer.style.setProperty('display', view === 'cards' ? 'block' : 'none', 'important');
     }
     if (graphContainer) {
-      graphContainer.style.display = view === 'graph' ? 'block' : 'none';
+      graphContainer.style.setProperty('display', view === 'graph' ? 'block' : 'none', 'important');
     }
   }
 }
 
-initViewToggle();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initViewToggle);
+} else {
+  initViewToggle();
+}
 document.addEventListener('nav', initViewToggle);
 `
 
