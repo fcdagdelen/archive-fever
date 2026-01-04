@@ -104,6 +104,8 @@ function initViewToggle() {
     });
   });
 
+  let graphRendered = false;
+
   function setView(view) {
     toggleBtns.forEach(btn => {
       const isActive = btn.getAttribute('data-view') === view;
@@ -116,6 +118,18 @@ function initViewToggle() {
     }
     if (graphContainer) {
       graphContainer.style.setProperty('display', view === 'graph' ? 'block' : 'none', 'important');
+
+      // Trigger graph rendering when switching to graph view
+      if (view === 'graph' && !graphRendered) {
+        const triggerBtn = graphContainer.querySelector('.home-graph-trigger');
+        if (triggerBtn) {
+          // Small delay to ensure container is visible before rendering
+          setTimeout(() => {
+            triggerBtn.click();
+            graphRendered = true;
+          }, 50);
+        }
+      }
     }
   }
 }

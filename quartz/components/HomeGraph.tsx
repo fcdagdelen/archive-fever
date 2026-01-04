@@ -44,6 +44,9 @@ export default ((opts?: Partial<D3Config>) => {
         <div class="home-graph-container">
           <div class="global-graph-outer">
             <div class="global-graph-container" data-cfg={JSON.stringify(config)}></div>
+            <button class="global-graph-icon home-graph-trigger" aria-label="Render Graph" style="display: none;">
+              Render
+            </button>
           </div>
         </div>
       </div>
