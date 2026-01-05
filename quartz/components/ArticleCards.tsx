@@ -83,9 +83,9 @@ export default ((userOpts?: Partial<Options>) => {
 .cards-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  grid-auto-rows: auto !important;
+  grid-auto-rows: 1fr !important;
   gap: 1.5rem !important;
-  align-items: start !important;
+  align-items: stretch !important;
 }
 
 @media (max-width: 1200px) {
@@ -117,7 +117,8 @@ export default ((userOpts?: Partial<Options>) => {
 .card-link {
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;
+  height: 100%;
 }
 
 .article-card {
@@ -129,8 +130,8 @@ export default ((userOpts?: Partial<Options>) => {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  min-height: 180px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .article-card:hover {
