@@ -78,6 +78,18 @@ export default (() => {
   background: var(--secondary);
   border-color: var(--secondary);
 }
+
+@media (max-width: 800px) {
+  .view-toggle {
+    margin-bottom: 1rem;
+  }
+
+  .toggle-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.625rem 0.75rem;
+  }
+}
 `
 
   ViewToggle.afterDOMLoaded = `

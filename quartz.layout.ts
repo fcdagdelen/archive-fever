@@ -46,7 +46,7 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.ConceptNav(),
+    Component.DesktopOnly(Component.ConceptNav()),
   ],
   right: [
     Component.ConditionalRender({
@@ -87,7 +87,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.ConceptNav(),
+    Component.DesktopOnly(Component.ConceptNav()),
   ],
   right: [],
 }
