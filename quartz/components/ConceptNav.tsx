@@ -30,11 +30,18 @@ export default (() => {
       }
     }
 
+    // Sort concepts by article count (descending)
+    const sortedConcepts = [...CONCEPTS].sort((a, b) => {
+      const countA = tagCounts.get(a.tag) ?? 0
+      const countB = tagCounts.get(b.tag) ?? 0
+      return countB - countA
+    })
+
     return (
       <nav class={classNames(displayClass, "concept-nav")}>
         <h3 class="concept-nav-title">Concepts</h3>
         <ul class="concept-list">
-          {CONCEPTS.map((concept) => {
+          {sortedConcepts.map((concept) => {
             const count = tagCounts.get(concept.tag) ?? 0
 
             return (
@@ -57,13 +64,13 @@ export default (() => {
 }
 
 .concept-nav-title {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--gray);
-  margin: 0 0 0.75rem 0;
-  padding-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.375rem;
   border-bottom: 1px solid var(--lightgray);
 }
 
@@ -89,9 +96,9 @@ export default (() => {
 .concept-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 4px;
   text-decoration: none;
   transition: background-color 0.15s ease;
 }
@@ -101,18 +108,18 @@ export default (() => {
 }
 
 .concept-name {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--dark);
   flex-grow: 1;
 }
 
 .concept-count {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: var(--gray);
   background: var(--lightgray);
-  padding: 0.125rem 0.5rem;
-  border-radius: 10px;
-  min-width: 1.5rem;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 8px;
+  min-width: 1.25rem;
   text-align: center;
 }
 

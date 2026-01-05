@@ -77,12 +77,15 @@ export default ((userOpts?: Partial<Options>) => {
 .article-cards {
   width: 100% !important;
   display: block !important;
+  box-sizing: border-box !important;
 }
 
 .cards-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
+  grid-auto-rows: auto !important;
   gap: 1.5rem !important;
+  align-items: start !important;
 }
 
 @media (max-width: 1200px) {
@@ -99,6 +102,7 @@ export default ((userOpts?: Partial<Options>) => {
 
   .article-card {
     padding: 1rem;
+    min-height: auto;
   }
 
   .card-title {
@@ -113,6 +117,7 @@ export default ((userOpts?: Partial<Options>) => {
 .card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .article-card {
@@ -120,11 +125,12 @@ export default ((userOpts?: Partial<Options>) => {
   border: 1px solid var(--lightgray);
   border-radius: 8px;
   padding: 1.25rem;
-  height: 100%;
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-height: 180px;
+  box-sizing: border-box;
 }
 
 .article-card:hover {

@@ -1,5 +1,33 @@
 @use "./base.scss";
 
+// Responsive layout improvements
+.page {
+  box-sizing: border-box;
+}
+
+// Main content area responsive margins
+.center {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+
+  @media (min-width: 800px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+// Ensure sidebar doesn't overflow
+.left.sidebar {
+  box-sizing: border-box;
+  padding-right: 1rem;
+}
+
 // Synthesis callout - distinct styling for editorial overview at end of digests
 .callout[data-callout="abstract"] {
   --callout-color: 130, 100, 180;
