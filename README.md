@@ -1,6 +1,6 @@
 # Archive Fever
 
-**🔗 [[https://fcdagdelen.github.io/latent-digest/](https://fcdagdelen.github.io/latent-digest/)]**
+**🔗 [https://fcdagdelen.github.io/archive-fever/](https://fcdagdelen.github.io/archive-fever/)**
 
 Deep research essays on the intersection of **AI systems**, **cognitive architectures**, and **human-machine interfaces**.
 
