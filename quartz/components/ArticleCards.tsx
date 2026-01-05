@@ -94,6 +94,19 @@ export default ((userOpts?: Partial<Options>) => {
 @media (max-width: 800px) {
   .cards-grid {
     grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .article-card {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-summary {
+    font-size: 0.8125rem;
   }
 }
 
