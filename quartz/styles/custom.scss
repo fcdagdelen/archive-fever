@@ -9,7 +9,11 @@
 
 // Logo uses Comico
 .page-title {
-  font-family: 'Comico', var(--headerFont);
+  font-family: 'Comico', var(--headerFont) !important;
+
+  a {
+    font-family: inherit;
+  }
 }
 
 // Responsive layout improvements

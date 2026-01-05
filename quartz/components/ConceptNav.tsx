@@ -1,18 +1,18 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
 
-// Concept definitions with display names and tag paths
+// Concept definitions with display names, tag paths, and colors (matching graph/gradients)
 const CONCEPTS = [
-  { name: "Knowledge Graphs", tag: "ai-systems/knowledge-graphs" },
-  { name: "Memory Systems", tag: "ai-systems/memory-systems" },
-  { name: "Small Models", tag: "ai-systems/small-models" },
-  { name: "Cognitive Architecture", tag: "ai-systems/cognitive-architecture" },
-  { name: "Psyche Interfaces", tag: "human-ai-interaction/psyche-interfaces" },
-  { name: "AI Experience Design", tag: "human-ai-interaction/ai-experience-design" },
-  { name: "Bidirectional Context", tag: "human-ai-interaction/bidirectional-context" },
-  { name: "Neuroscience", tag: "applied/neuroscience" },
-  { name: "AI-Native Development", tag: "applied/ai-native-development" },
-  { name: "Therapeutics", tag: "applied/therapeutics" },
+  { name: "Knowledge Graphs", tag: "ai-systems/knowledge-graphs", color: "#6366f1" },
+  { name: "Memory Systems", tag: "ai-systems/memory-systems", color: "#0ea5e9" },
+  { name: "Small Models", tag: "ai-systems/small-models", color: "#f59e0b" },
+  { name: "Cognitive Architecture", tag: "ai-systems/cognitive-architecture", color: "#ec4899" },
+  { name: "Psyche Interfaces", tag: "human-ai-interaction/psyche-interfaces", color: "#8b5cf6" },
+  { name: "AI Experience Design", tag: "human-ai-interaction/ai-experience-design", color: "#14b8a6" },
+  { name: "Bidirectional Context", tag: "human-ai-interaction/bidirectional-context", color: "#3b82f6" },
+  { name: "Neuroscience", tag: "applied/neuroscience", color: "#ef4444" },
+  { name: "AI-Native Development", tag: "applied/ai-native-development", color: "#22c55e" },
+  { name: "Therapeutics", tag: "applied/therapeutics", color: "#06b6d4" },
 ]
 
 export default (() => {
@@ -46,7 +46,8 @@ export default (() => {
 
             return (
               <li class="concept-item">
-                <a href={`./tags/${concept.tag}`} class="concept-link">
+                <a href={`./tags/${concept.tag}`} class="concept-link" style={`--concept-color: ${concept.color}`}>
+                  <span class="concept-dot" />
                   <span class="concept-name">{concept.name}</span>
                   {count > 0 && <span class="concept-count">{count}</span>}
                 </a>
@@ -105,6 +106,19 @@ export default (() => {
 
 .concept-link:hover {
   background-color: var(--lightgray);
+}
+
+.concept-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--concept-color);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.concept-link:hover .concept-dot {
+  opacity: 1;
 }
 
 .concept-name {
