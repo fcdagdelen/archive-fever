@@ -204,11 +204,10 @@ export default ((userOpts?: Partial<Options>) => {
 
 .card-summary {
   font-size: 0.85rem;
-  color: var(--gray);
+  color: var(--darkgray);
   line-height: 1.5;
   margin: 0;
   flex-grow: 1;
-  opacity: 0.85;
 }
 
 [data-theme="dark"] .article-card {

@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Comico';
-  src: url('/static/fonts/Comico-Regular.woff2') format('woff2');
+  src: url('./static/fonts/Comico-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
@@ -42,6 +42,34 @@
 .left.sidebar {
   box-sizing: border-box;
   padding-right: 1rem;
+}
+
+// Homepage layout - expand content area since graph is in main flow
+body[data-slug="index"] {
+  // Hide empty right sidebar on homepage
+  .sidebar.right {
+    display: none;
+  }
+
+  // Expand grid to use full width (left sidebar + expanded center)
+  #quartz-body {
+    @media (min-width: 1200px) {
+      grid-template-columns: 320px 1fr !important;
+      grid-template-areas:
+        "grid-sidebar-left grid-header"
+        "grid-sidebar-left grid-center"
+        "grid-sidebar-left grid-footer" !important;
+      max-width: 1400px;
+      margin-right: 3rem;
+    }
+  }
+
+  // Give cards more breathing room
+  .cards-grid {
+    @media (min-width: 1200px) {
+      gap: 2rem !important;
+    }
+  }
 }
 
 // Synthesis callout - distinct styling for editorial overview at end of digests
