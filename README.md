@@ -16,16 +16,16 @@ These are time-clustered explorations—snapshots of intellectual preoccupations
 
 **Concepts Sidebar** — Filter by research themes:
 
-- **Knowledge Graphs** — Graph-based knowledge representation and retrieval
-- **Memory Systems** — Persistence, consolidation, and principled decay
-- **Small Models** — Specialized sub-10B parameter models
-- **Cognitive Architecture** — Two-tier processing patterns
-- **Psyche Interfaces** — Language as archaeological data about the mind
-- **AI Experience Design** — UX patterns for AI products
-- **Bidirectional Context** — Mutual transformation in dialogue
-- **Neuroscience** — Brain models informing AI design
-- **AI-Native Development** — Building with AI-first tools
-- **Therapeutics** — Health and medical applications
+- **Knowledge Graphs** — Modeling the structure of belief and meaning
+- **Memory Systems** — How AI might remember, forget, and consolidate like minds do
+- **Small Models** — Specialized cognitive modules at the edge
+- **Cognitive Architecture** — System 1/System 2 patterns for AI design
+- **Psyche Interfaces** — Language as a window into the unconscious
+- **AI Experience Design** — Designing AI for transformation, not just utility
+- **Bidirectional Context** — When dialogue changes both human and AI
+- **Neuroscience** — Borrowing nature's cognitive blueprints
+- **AI-Native Development** — How building software changes when AI is central
+- **Therapeutics** — Where AI meets biology and medicine
 
 ## Structure
 
