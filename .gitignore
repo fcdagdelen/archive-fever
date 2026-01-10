@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output
+public/
+
+# Cache
+quartz/.quartz-cache/
+.quartz-cache/
+
+# OS files
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
