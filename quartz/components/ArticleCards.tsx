@@ -28,6 +28,7 @@ const TAG_GRADIENTS: Record<string, [string, string, string]> = {
   "neuroscience": ["#ef4444", "#f43f5e", "#fb7185"],          // Red-rose
   "ai-native-development": ["#22c55e", "#10b981", "#34d399"], // Green-emerald
   "therapeutics": ["#06b6d4", "#0ea5e9", "#38bdf8"],          // Cyan-sky
+  "projects": ["#7b97aa", "#284b63", "#7b97aa"],              // Logo blue-gray (Building) - uses texture instead of gradient
 }
 
 const DEFAULT_GRADIENT: [string, string, string] = ["#64748b", "#475569", "#334155"] // Slate
@@ -60,9 +61,16 @@ export default ((userOpts?: Partial<Options>) => {
       return parts[parts.length - 1]
     }
 
+    // Check if this is a "Building" project card
+    const isBuildingCard = (tags: string[] | undefined): boolean => {
+      return getTagKey(tags) === "projects"
+    }
+
     // Generate gradient style based on tag (pale/subtle)
     const getGradientStyle = (tags: string[] | undefined): string => {
       const tagKey = getTagKey(tags)
+      // Building cards use CSS class for texture instead
+      if (tagKey === "projects") return ""
       const colors = TAG_GRADIENTS[tagKey] || DEFAULT_GRADIENT
       // Create a subtle gradient with low opacity (0x11 = ~7%, 0x18 = ~9%)
       return `linear-gradient(135deg, ${colors[0]}11 0%, ${colors[1]}18 50%, ${colors[2]}11 100%)`
@@ -88,12 +96,15 @@ export default ((userOpts?: Partial<Options>) => {
             const tagKey = getTagKey(tags)
             const accentColor = (TAG_GRADIENTS[tagKey] || DEFAULT_GRADIENT)[0]
 
+            const isBuilding = isBuildingCard(tags)
+            const cardClass = isBuilding ? "article-card building-card" : "article-card"
+
             return (
               <a
                 href={resolveRelative(fileData.slug!, page.slug!)}
                 class="card-link internal"
               >
-                <article class="article-card">
+                <article class={cardClass}>
                   <div class="card-accent" style={`background: ${accentColor};`}></div>
                   {primaryTag && (
                     <span class="card-tag" style={`color: ${accentColor};`}>{primaryTag}</span>
@@ -224,6 +235,39 @@ export default ((userOpts?: Partial<Options>) => {
 
 [data-theme="dark"] .card-summary {
   color: var(--lightgray);
+}
+
+/* Building card - diagonal line texture */
+.building-card {
+  position: relative;
+}
+
+.building-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  opacity: 0.04;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #7b97aa,
+    #7b97aa 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  pointer-events: none;
+}
+
+.building-card:hover::before {
+  opacity: 0.06;
+}
+
+[data-theme="dark"] .building-card::before {
+  opacity: 0.08;
+}
+
+[data-theme="dark"] .building-card:hover::before {
+  opacity: 0.12;
 }
 `
   return ArticleCards

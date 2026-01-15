@@ -13,6 +13,7 @@ const CONCEPTS = [
   { name: "Neuroscience", tag: "applied/neuroscience", color: "#ef4444" },
   { name: "AI-Native Development", tag: "applied/ai-native-development", color: "#22c55e" },
   { name: "Therapeutics", tag: "applied/therapeutics", color: "#06b6d4" },
+  { name: "Projects", tag: "building/projects", color: "#7b97aa" },
 ]
 
 export default (() => {
