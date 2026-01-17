@@ -5,6 +5,7 @@ tags:
   - building/projects
   - ai-systems/knowledge-graphs
   - ai-systems/memory-systems
+  - tristero-research
 summary: |
   Tristero is an event-sourced knowledge system where the ontology—the categories, types, and relationships that organize information—emerges and evolves through a governed reflection process. It treats organizational structure as emergent, provisional, and learnable rather than fixed, designed, and imposed.
 ---

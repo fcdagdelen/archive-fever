@@ -4,6 +4,7 @@ date: 2025-01-10
 tags:
   - human-ai-interaction/ai-experience-design
   - ai-systems/cognitive-architecture
+  - tristero-research
 summary: |
   The emerging aesthetic of reasoning-forward interfaces represents a profound convergence: literary traditions that foreground thought's movement, philosophical forms that perform rather than report inquiry, and computational systems where the trace of reasoning becomes the primary experience rather than hidden machinery.
 ---
