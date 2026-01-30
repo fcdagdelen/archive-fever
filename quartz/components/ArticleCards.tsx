@@ -131,7 +131,7 @@ export default ((userOpts?: Partial<Options>) => {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   grid-auto-rows: 1fr !important;
-  gap: 1.5rem !important;
+  gap: 1rem !important;
   align-items: stretch !important;
 }
 
@@ -171,13 +171,13 @@ export default ((userOpts?: Partial<Options>) => {
 .article-card {
   position: relative;
   border: 1px solid var(--lightgray);
-  border-radius: 12px;
-  padding: 1.25rem;
-  padding-top: 1.5rem;
+  border-radius: 10px;
+  padding: 1rem;
+  padding-top: 1.25rem;
   transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
@@ -188,8 +188,8 @@ export default ((userOpts?: Partial<Options>) => {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  border-radius: 12px 12px 0 0;
+  height: 3px;
+  border-radius: 10px 10px 0 0;
 }
 
 .article-card:hover {
@@ -199,14 +199,14 @@ export default ((userOpts?: Partial<Options>) => {
 }
 
 .card-tag {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .card-title {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.3;
   margin: 0;
@@ -214,9 +214,9 @@ export default ((userOpts?: Partial<Options>) => {
 }
 
 .card-summary {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--darkgray);
-  line-height: 1.5;
+  line-height: 1.45;
   margin: 0;
   flex-grow: 1;
 }
@@ -246,7 +246,7 @@ export default ((userOpts?: Partial<Options>) => {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: 10px;
   opacity: 0.08;
   background-image: repeating-linear-gradient(
     -45deg,
