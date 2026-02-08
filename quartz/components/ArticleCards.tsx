@@ -31,6 +31,8 @@ const TAG_GRADIENTS: Record<string, [string, string, string]> = {
   "projects": ["#7b97aa", "#284b63", "#7b97aa"],              // Logo blue-gray (Building) - uses texture instead of gradient
 }
 
+const CRIMSON: [string, string, string] = ["#DC143C", "#B91C3B", "#E8476A"] // Crimson (Egregore)
+
 const DEFAULT_GRADIENT: [string, string, string] = ["#64748b", "#475569", "#334155"] // Slate
 
 export default ((userOpts?: Partial<Options>) => {
@@ -66,6 +68,15 @@ export default ((userOpts?: Partial<Options>) => {
       return getTagKey(tags) === "projects"
     }
 
+    // Check if any tag is "egregore" (overrides accent to crimson)
+    const hasEgregoreTag = (tags: string[] | undefined): boolean => {
+      if (!tags) return false
+      return tags.some((t) => {
+        const parts = t.split("/")
+        return parts[parts.length - 1] === "egregore"
+      })
+    }
+
     // Generate gradient style based on tag (pale/subtle)
     const getGradientStyle = (tags: string[] | undefined): string => {
       const tagKey = getTagKey(tags)
@@ -96,6 +107,9 @@ export default ((userOpts?: Partial<Options>) => {
             const tagKey = getTagKey(tags)
             const accentColor = (TAG_GRADIENTS[tagKey] || DEFAULT_GRADIENT)[0]
 
+            const isEgregore = hasEgregoreTag(tags)
+            const effectiveAccent = isEgregore ? CRIMSON[0] : accentColor
+
             const isBuilding = isBuildingCard(tags)
             const cardClass = isBuilding ? "article-card building-card" : "article-card"
 
@@ -104,10 +118,10 @@ export default ((userOpts?: Partial<Options>) => {
                 href={resolveRelative(fileData.slug!, page.slug!)}
                 class="card-link internal"
               >
-                <article class={cardClass}>
-                  <div class="card-accent" style={`background: ${accentColor};`}></div>
+                <article class={cardClass} style={isBuilding ? `--building-accent: ${effectiveAccent};` : ""}>
+                  <div class="card-accent" style={`background: ${effectiveAccent};`}></div>
                   {primaryTag && (
-                    <span class="card-tag" style={`color: ${accentColor};`}>{primaryTag}</span>
+                    <span class="card-tag" style={`color: ${effectiveAccent};`}>{primaryTag}</span>
                   )}
                   <h3 class="card-title">{title}</h3>
                   <p class="card-summary">{truncateSummary(summary)}</p>
@@ -240,6 +254,7 @@ export default ((userOpts?: Partial<Options>) => {
 /* Building card - diagonal line texture */
 .building-card {
   position: relative;
+  --building-accent: #7b97aa;
 }
 
 .building-card::before {
@@ -250,8 +265,8 @@ export default ((userOpts?: Partial<Options>) => {
   opacity: 0.08;
   background-image: repeating-linear-gradient(
     -45deg,
-    #7b97aa,
-    #7b97aa 1px,
+    var(--building-accent),
+    var(--building-accent) 1px,
     transparent 1px,
     transparent 8px
   );

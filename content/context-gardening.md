@@ -2,7 +2,7 @@
 title: "Context Gardening"
 date: 2026-02-08
 tags:
-  - building/products
+  - building/projects
   - egregore
   - ai-systems/knowledge-graphs
   - human-ai-interaction/bidirectional-context
