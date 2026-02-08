@@ -85,3 +85,13 @@ body[data-slug="index"] {
     text-transform: uppercase;
   }
 }
+
+// Product tag - crimson red
+a.internal.tag-link[href*="building/products"] {
+  background-color: rgba(220, 20, 60, 0.12);
+  color: #DC143C;
+
+  &:hover {
+    background-color: rgba(220, 20, 60, 0.22);
+  }
+}
