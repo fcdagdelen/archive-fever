@@ -20,7 +20,7 @@ But this framing carries a quiet assumption that doesn't survive contact with re
 
 In practice, context doesn't work like that. Context emerges.
 
-## What emergence knows
+## Epistemics of emergence
 
 Context gardening starts from a different premise: you don't manufacture context, you cultivate the conditions for it to grow. You set the soil — the environment, the capture methodologies, the tooling — and then you let the organic practice of teams working together produce the context that matters.
 
