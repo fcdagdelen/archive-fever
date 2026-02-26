@@ -4,7 +4,7 @@ date: 2026-02-27
 tags:
   - ai-systems/cognitive-architecture
   - human-ai-interaction/ai-experience-design
-  - tristero-research
+  - egregore
 summary: |
   Version control is civilization's invisible coordination substrate — and now AI proposes to absorb it. This research compendium traces the five-century pattern of priesthood dissolution from Gutenberg through spreadsheets to vibe coding, examines what changes when intelligence replaces mechanism as the interface, and asks whether tools like Egregore can be convivial rather than manipulative. Drawing on Torvalds, Illich, Hutchins, Brooks, Karpathy, Litt, and Appleton.
 ---
